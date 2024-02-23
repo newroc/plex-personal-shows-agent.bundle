@@ -103,6 +103,7 @@ class PersonalShowsAgent(Agent.TV_Shows):
         if os.path.exists(meta_path):
             meta_json = json.loads(Core.storage.load(meta_path))
             # Log.Info(meta_json)
+            trySet(metadata, 'title', any(meta_json, ['channel']))
             trySet(metadata, 'summary', any(meta_json, ['summary', 'description']))
             trySet(metadata, 'studio', any(meta_json, ['publisher','uploader']))
             # metadata.summary = meta_json.get('summary', '')
